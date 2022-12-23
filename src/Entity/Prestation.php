@@ -33,9 +33,13 @@ class Prestation
     #[ORM\ManyToOne(inversedBy: 'prestations')]
     private ?Category $relation = null;
 
+    #[ORM\OneToMany(mappedBy: 'prestation', targetEntity: Tarifs::class)]
+    private Collection $tarifs;
+
     public function __construct()
     {
         $this->rendezVouses = new ArrayCollection();
+        $this->tarifs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -129,6 +133,36 @@ class Prestation
     public function setRelation(?Category $relation): self
     {
         $this->relation = $relation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Tarifs>
+     */
+    public function getTarifs(): Collection
+    {
+        return $this->tarifs;
+    }
+
+    public function addTarif(Tarifs $tarif): self
+    {
+        if (!$this->tarifs->contains($tarif)) {
+            $this->tarifs->add($tarif);
+            $tarif->setPrestation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTarif(Tarifs $tarif): self
+    {
+        if ($this->tarifs->removeElement($tarif)) {
+            // set the owning side to null (unless already changed)
+            if ($tarif->getPrestation() === $this) {
+                $tarif->setPrestation(null);
+            }
+        }
 
         return $this;
     }
