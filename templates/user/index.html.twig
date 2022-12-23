@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de Profil
+{% endblock %}
+
+{% block body %}
+
+	<section class="text-center">
+		<h1>Profil Utilisateur</h1>
+
+		<p>Bonjour, voici votre mail utilisateur :
+			{{ app.user.email }}</p>
+
+		<h2>Voici vos prestations :
+		</h2>
+		{% if rdvUsers %}
+			{% for rdvUser in rdvUsers %}
+				<tr>
+					<td colspan="2">{{ rdvUser.id }}</td><br/>
+
+					<td>{{ rdvUser.name }}</td><br/>
+
+
+					<td>{{ rdvUser.status }}</td><br/>
+
+
+					<td>{{ rdvUser.prestation.name }}</td><br/>
+
+				</tr>
+			{% endfor %}
+		{% endif %}
+	</section>
+{% endblock %}

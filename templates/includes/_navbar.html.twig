@@ -1,0 +1,90 @@
+<div class="container-fluid d-flex">
+	<div>
+		<figure>
+			{# <img id="logo" src="assets/images/tux-100.svg" alt="logo du site" title="linux-tux"/> #}
+			<img id="logo" src="{{ asset("assets/images/tux-100.svg") }}" alt="logo du site" title="linux-tux"/>
+
+
+		</figure>
+	</div>
+	<div></div>
+	<h1 id="titreSite">Passer à Linux</h1>
+	<button id="hamburger-button">&#9776;</button>
+</div>
+
+
+<div id="hamburger">
+	<div id="hamburger-content">
+		<div class="container-fluid">
+			<nav class="navbar navbar-expand-xl navbar-dark bg-info">
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{ path('app_index') }}">Accueil</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="{{ path('app_contact') }}">Contact</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_prise_rendez_vous') }}">Prendre rendez-vous</a>
+						</li>
+
+
+						{% if app.user %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('app_user') }}">Profil</a>
+							</li>
+
+
+							{% if is_granted('ROLE_ADMIN') %}
+
+
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_category_index') }}">Categories</a>
+								</li>
+
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_rendez_vous_index') }}">Rendez-vous<a></li>
+
+									{% endif %}
+
+								{% else %}
+
+
+									<li class="nav-item">
+										<a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+									</li>
+
+									<li class="nav-item">
+										<a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+
+									</li>
+
+								{% endif %}
+
+
+							</ul>
+
+						</div>
+
+					</div>
+
+				</nav>
+
+			</div>
+			<div id="hamburger-sidebar">
+				<div id="hamburger-sidebar-header"></div>
+				<div id="hamburger-sidebar-body"></div>
+			</div>
+			<div id="hamburger-overlay"></div>
+		</div>
+	</div>
+</div>

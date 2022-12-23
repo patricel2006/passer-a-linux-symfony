@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prise RendezVous index
+{% endblock %}
+
+{% block body %}
+	<h1>Prise RendezVous index</h1>
+
+	{% include 'includes/_flashes.html.twig'  %}
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Date_rdv</th>
+				<th>Name</th>
+				<th>Status</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for rendez_vou in rendez_vous %}
+				<tr>
+					<td>{{ rendez_vou.id }}</td>
+					<td>{{ rendez_vou.dateRdv ? rendez_vou.dateRdv|date('Y-m-d') : '' }}</td>
+					<td>{{ rendez_vou.name }}</td>
+					<td>{{ rendez_vou.status }}</td>
+					<td>
+						<a href="{{ path('app_show_rendez_vous', {'id': rendez_vou.id}) }}">show</a>
+
+						<a href="{{ path('app_reservation_rendez_vous', {'id': rendez_vou.id}) }}">reservation</a>
+
+
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

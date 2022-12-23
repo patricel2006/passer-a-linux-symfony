@@ -1,0 +1,22 @@
+1. Créer un projet :
+
+2. config :
+    - préparer le style
+    - fichier .env
+    - récupérer la navBar
+
+3. créer la bdd :
+s c d:d:c // symfony console doctrine:database:create
+s c d:s:u --force // symfony console doctrine:schema:update
+s c make:entity // créer une entity
+s c make:crud // créer une crud
+s c make:controller
+
+authentification : 1. s c make:user
+                    2. s c make:auth
+  // modifier config/package/security.yaml pour le login et le logout
+  // modifier scr/security/appCustomAuthenticator.php : décommenter le return dans la méthode : onAuthenticationSuccess et mettre une route valide
+                    3. s c registration-form 
+
+création d'un formulaire :
+s c make:form nomduformulaire (//exemple contact) suivi du nom de l'entity : Contact                 

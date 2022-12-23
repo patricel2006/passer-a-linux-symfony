@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prise RendezVous
+{% endblock %}
+
+{% block body %}
+	<h1>Prise Rendez-vous</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ rendez_vou.id }}</td>
+			</tr>
+			<tr>
+				<th>Date_rdv</th>
+				<td>{{ rendez_vou.dateRdv ? rendez_vou.dateRdv|date('Y-m-d') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Name</th>
+				<td>{{ rendez_vou.name }}</td>
+			</tr>
+			<tr>
+				<th>Status</th>
+				<td>{{ rendez_vou.status }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_prise_rendez_vous') }}">back to list</a>
+
+{% endblock %}

@@ -1,0 +1,396 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/***************************HEADER****************************************/
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* header {
+    box-shadow: 0 1px 16px rgba(0, 0, 0, 0.2);
+    font-size: 15px;
+    padding-block: 16px;
+    padding-left: 32px;
+    text-transform: uppercase;
+    position: relative;
+    height: 18vh;
+} */
+
+nav,
+li {
+    display: inline-block;
+}
+
+#logo {
+    position: relative;
+}
+
+nav {
+    vertical-align: bottom;
+    padding-bottom: 10px;
+    height: 25vh;
+}
+
+li {
+    margin-left: 60px;
+}
+
+a,
+button {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.5em;
+}
+
+#hamburger-button {
+    z-index: 9;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    height: 50px;
+    width: 50px;
+    border: none;
+    background: #000;
+    color: #fff;
+    transform: translateY(-50%);
+    display: none;
+}
+
+
+#hamburger-overlay {
+    min-width: 100%;
+    height: 90vh;
+    background: url("../images/background.png") center;
+    background-size: cover;
+
+}
+
+
+#hamburger-content {
+    display: flex;
+}
+
+
+#hamburger-overlay {
+    position: fixed;
+    z-index: 10;
+    /*commme les calques en photoshop*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+#hamburger-sidebar {
+    position: fixed;
+    width: 85%;
+    z-index: 11;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #fff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+    overflow-y: auto;
+    display: none;
+}
+
+#hamburger-sidebar li {
+    display: block;
+}
+
+#hamburger-sidebar-header {
+    background: url("../images/sidebar-header.jpg") center;
+    background-size: cover;
+    height: 150px;
+}
+
+#hamburger-sidebar-body {
+    padding-block: 15px;
+    padding-inline: 10px;
+}
+
+/***********************ecrans inferieurs à 992px - menu burger - *******************/
+
+@media screen and (max-width:992px) {
+    header {
+        background: red;
+    }
+
+    #hamburger-content {
+        display: none;
+    }
+
+    #hamburger-button,
+    #hamburger-sidebar,
+    .hamburger-activated #hamburger-overlay {
+        display: block;
+    }
+
+    .hamburger-activated #hamburger-sidebar {
+        transform: translateX(0);
+    }
+
+    #titreSite {
+        z-index: 1;
+    }
+
+    #logo {
+        z-index: 0;
+    }
+}
+
+/************************************fin du header**********************************/
+
+#titreSite {
+    z-index: 1;
+    margin-top: 30px;
+    padding-bottom: 20px;
+    color: orange;
+    text-transform: uppercase;
+    font-size: 5rem;
+    position: absolute;
+    left: 150px;
+
+}
+
+
+
+header>div#hamburger>div#hamburger-content>figure {
+    border: 2px solid orange;
+    border-radius: 10%;
+    height: 15vh;
+}
+
+
+header>div#hamburger>div#hamburger-content>nav>ul>li>a {
+    color: black;
+    text-decoration: none;
+    margin: 0 auto 20px;
+}
+
+header>div#hamburger>div#hamburger-content>nav>ul>li>a:hover {
+    color: orange;
+}
+
+/******************************MAIN******************************/
+div.container>main>div.probleme {
+    margin: 110px auto;
+}
+
+div.container>main>div.probleme>h2 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: xx-large;
+    padding: 20px;
+}
+
+div.container>main>div.solution {
+    margin: 0 auto 40px;
+}
+
+div.container>main>div.solution>h2 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: xx-large;
+    margin: 0 px auto;
+    padding: 20px;
+}
+
+main>div.presentation {
+    display: flex;
+    flex-direction: row;
+}
+
+div.presentation>div#presentationTexte {
+    width: 50%;
+}
+
+div.presentation>figure#cite_sciences {
+    margin-top: 40px;
+    width: 50%;
+}
+
+#cite_sciences>img {
+    border: 2px solid black;
+    box-shadow: 20px;
+    border-radius: 10px;
+}
+
+#cite_sciences>figcaption {
+    font-style: italic;
+    text-align: center;
+}
+
+#presentationTexte>ul li {
+    font-style: italic;
+}
+
+div.container>main>div.solution>div.presentation>div#presentationTexte>ul {
+    list-style: circle !important;
+}
+
+div.container>main>div.nosTarifs {
+    border: 3px solid black;
+    border-radius: 10px;
+    margin: 40px auto;
+}
+
+div.container>main>div.nosTarifs>h2 {
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+div.container>main>div.nosTarifs>h2 {
+    margin: 0 auto;
+}
+
+div.container>main>div.nosTarifs>ol {
+    margin: 0 auto;
+    width: 60%;
+}
+
+#titreContact {
+    text-align: center;
+    margin: 20px auto;
+}
+
+#contact {
+    border: 3px solid black;
+    border-radius: 10px;
+    margin: 20px auto;
+    display: flex;
+}
+
+#freedom-iframe-container {
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+/*********************************page de contact**********************/
+h4 {
+    font-style: italic;
+    text-align: center;
+}
+
+#conteneurFormulaire {
+    border: 3px solid black;
+    border-radius: 10px;
+    margin: 30px auto;
+}
+
+#formulaireContact {
+    margin: 30px auto;
+}
+
+textarea#message {
+    width: 100%;
+}
+
+/*******************************page d'inscription****************/
+section#page_inscription {
+    border: 2px solid orange;
+    border-radius: 20px;
+    width: 80%;
+    margin: auto;
+}
+
+section#page_inscription>h1 {
+    text-align: center;
+    padding: 20px;
+    ;
+}
+
+section#page_inscription>h2 {
+    text-align: center;
+}
+
+form#formulaire_inscription {
+    text-align: center;
+    border: 2px solid orange;
+    border-radius: 20px;
+    width: 80%;
+    margin: auto;
+}
+
+#formulaire_inscription>fieldset>legend>h2 {
+    margin: 20px;
+}
+
+#formulaire_inscription>fieldset>input {
+    height: 7vh;
+    border: solid 1px black;
+    border-radius: 20px;
+}
+
+form>fieldset>input#submit {
+    border: 4px solid orange !important;
+    border-radius: 15px;
+    padding: 30px !important;
+    margin: 20px;
+}
+
+section#login {
+    border: 2px solid orange;
+    border-radius: 15px;
+    text-align: center;
+    margin: auto;
+    width: 80%;
+    margin-top: 20px;
+}
+
+section#login>fieldset>legend>h2 {
+    margin: 20px;
+}
+
+/*********************page de connexion**************************/
+
+#page_connexion {
+    border: 2px solid orange;
+    border-radius: 20px;
+    width: 80%;
+    margin: auto;
+}
+
+#page_connexion>h1 {
+    text-align: center;
+    padding: 20px;
+}
+
+section#page_connexion>h2 {
+    text-align: center;
+}
+
+#formulaire_connexion {
+    text-align: center;
+    border: 2px solid orange;
+    border-radius: 20px;
+    width: 80%;
+    margin: auto;
+}
+
+#formulaire_connexion>fieldset>legend>h2 {
+    margin: 20px;
+}
+
+#submit {
+    border: 4px solid orange;
+    border-radius: 15px;
+    padding: 30px;
+    margin: 20px;
+}
+
+/******************************FOOTER**************************/
+
+footer {
+    border: 3px solid black;
+    border-radius: 10px;
+    margin: 20px auto;
+}

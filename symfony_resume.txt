@@ -1,0 +1,23 @@
+Maquette + cahier des charges : détermination des besoins puis des fonctionalités :
+
+I. fonctionalités utilisateur :
+    - voir l'offre de service :
+    - s'inscrire
+    - se connecter
+    - envoyer une demande d'installation
+
+II. fonctionalités administrateur :
+    - gérer les demandes d'installation
+
+III. les vues :
+    - offre de service :
+    - formulaire de contact
+    - formulaire de connexion
+    - formulaire d'inscription
+
+IV. base de données :
+    - table membres : id_membre : int AI
+                      prenom : varchar 100
+                      nom : varchar 100
+                      email : varchar 100
+                      mot_de_passe : varchar 100

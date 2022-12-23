@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Prestation
+{% endblock %}
+
+{% block body %}
+
+	{% for rdv in rdvs %}
+
+		<p>{{ rdv.status }}</p>
+
+	{% else %}
+		<p>Ce rendez-vous est indisponible !</p>
+
+	{% endfor %}
+
+{% endblock %}

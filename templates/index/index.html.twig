@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}passer-a-linux
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<main>
+
+			<div class="probleme row alert alert-primary text-center" role="alert">
+				<h2>Marre de payer pour faire vos mises à jour windows ?</h2>
+			</div>
+			<div class="solution alert alert-warning text-center" role="alert">
+				<h2>LA SOLUTION : PASSER À LINUX !</h2>
+			</div>
+			<section class="alert alert-warning">
+				<h3 class="text-center">PRESENTATION :</h3>
+
+
+				<div class="presentation d-flex">
+
+
+					<div id="presentationTexte" class="col-6 p-5">
+						<br><br><br>
+						<p>Passionné de Logiciels Libres, je suis membre d'Ubuntu-fr et à ce titre je fais des installations d'OS LINUX lors d'Install Party organisées à la Cité des Sciences et de L'industrie de La Vilette.																				C'est donc en connaissance de cause que je vous propose de faire l'installation de la distribution linux de votre choix à votre domicile. (voir les prestations proposées ci-dessous)
+						</p>
+					</div>
+
+					<figure id="cite_sciences" class="col-6 p-5">
+						<img src="assets/images/citeSciences.webp" alt="cité des sciences de la vilette">
+						<figcaption class="m-2">Cité des Sciences et de l'Industrie</figcaption>
+					</figure>
+				</div>
+			</section>
+
+			{# ------------------------------------------------------------------------------------ #}
+
+			<section class="alert alert-warning">
+				<h3 class="text-center">PRESTATIONS :</h3>
+
+				<br>
+
+				{% include "includes/_flashes.html.twig" %}
+
+
+				<div
+					class="row">
+					{# navbar #}
+					{% for category in categories %}
+						<a href="{{ path('app_prestation_index', { 'id' : category.id }) }}" class="btn btn-primary col-md-3 mx-auto ">{{ category.name }}</a>
+
+					{% endfor %}
+				</div>
+				<br>
+				<section class="d-flex">
+
+					{% for prestation in prestations %}
+						<div class="card m-5" style="width: 18rem;">
+							<img class="card-img-top" src="{{ asset('photos/' ~ prestation.image) }}" alt="Card image cap">
+
+							<div class="card-body">
+								<h5 class="card-title">{{ prestation.name }}</h5>
+
+								<p class="card-text">{{ prestation.description }}</p>
+
+								<a href="{{ path('user_prestation_show' , { 'id' : prestation.id }) }}" class="btn btn-primary">Lire la suite</a>
+
+							</div>
+						</div>
+					{% endfor %}
+				</section>
+
+			</section>
+
+
+			{#--------------------------------TARIFS--------------------------------------------------#}
+
+
+			<div class="nosTarifs alert alert-warning col-12">
+				<h2 class="text-center">Nos Tarifs :</h2>
+
+				<section class="d-flex">
+
+					{% for prestation in prestations %}
+						<div class="card m-5" style="width: 18rem;">
+							<img class="card-img-top" src="{{ asset('photos/' ~ prestation.image) }}" alt="Card image cap">
+
+							<div class="card-body">
+								<h5 class="card-title">{{ prestation.name }}</h5>
+
+								<p class="card-text">{{ prestation.description }}</p>
+
+								<a href="{{ path('user_prestation_show' , { 'id' : prestation.id }) }}" class="btn btn-primary">Lire la suite</a>
+
+							</div>
+						</div>
+					{% endfor %}
+				</section>
+
+
+				<ol class="p-5 col-12 list-group list-group-numbered">
+					<li class="list-group-item">Forfait Installation...............................................190
+																																																																																																																																																																						                    euros*</li>
+					<li class="list-group-item">Forfait Installation + Prise en main........................250 euros*
+					</li>
+					<p><br>* tarifs adaptables en fonction de vos moyens</p>
+				</ol>
+			</div>
+
+		</main>
+	</div>
+{% endblock %}

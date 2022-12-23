@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Prestation
+{% endblock %}
+
+{% block body %}
+
+	{{ form_start(form) }}
+	{{ form_widget(form) }}
+	<button class="btn">{{ button_label|default('Save') }}</button>
+	{{ form_end(form) }}
+
+
+	<div class="col-6">
+		<div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+			<div class="col p-4 d-flex flex-column position-static">
+				<strong class="d-inline-block mb-2 text-success">{{ prestation.name }}</strong>
+				<h3 class="mb-0">{{ prestation.name }}</h3>
+				<div class="mb-1 text-muted">Nov 11</div>
+				<p class="mb-auto">{{ prestation.description }}</p>
+			</div>
+			<div class="col-auto d-none d-lg-block">
+				<img src="{{ asset('photos/' ~ prestation.image) }}" alt="">
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}
