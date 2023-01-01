@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
+    // méthode renvoyant les rendez-vous d'un utilisateur
     #[Route('/user', name: 'app_user')]
     public function index(RendezVousRepository $rendezVous): Response
     {

@@ -8,6 +8,7 @@ use App\Services\RechercheRdv;
 use App\Repository\CategoryRepository;
 use App\Repository\PrestationRepository;
 use App\Repository\RendezVousRepository;
+use App\Repository\TarifsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,11 +17,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class IndexController extends AbstractController
 {
     #[Route('/', name: 'app_index')]
-    public function index(PrestationRepository $prestationRepository, CategoryRepository $categoryRepository): Response
+    public function index(PrestationRepository $prestationRepository, CategoryRepository $categoryRepository, TarifsRepository $tarifsRepository): Response
     {
         return $this->render('index/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
-            'prestations' => $prestationRepository->findAll()
+            'prestations' => $prestationRepository->findAll(),
+            'tarifs' => $tarifsRepository->findAll(),
         ]);
     }
 

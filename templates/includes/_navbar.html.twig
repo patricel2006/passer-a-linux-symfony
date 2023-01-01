@@ -29,62 +29,68 @@
 							<a class="nav-link active" aria-current="page" href="{{ path('app_contact') }}">Contact</a>
 						</li>
 
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_prise_rendez_vous') }}">Prendre rendez-vous</a>
-						</li>
-
-
-						{% if app.user %}
+						{% if is_granted('ROLE_USER') and is_granted('ROLE_ADMIN') == false %}
 							<li class="nav-item">
-								<a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+								<a class="nav-link active" href="{{ path('app_prise_rendez_vous') }}">Prendre rendez-vous</a>
 							</li>
 
 							<li class="nav-item">
-								<a class="nav-link" href="{{ path('app_user') }}">Profil</a>
+								<a class="nav-link active" href="{{ path('app_logout') }}">Logout</a>
+							</li>
+
+							<li class="nav-item">
+								<a class="nav-link active" href="{{ path('app_user') }}">Profil</a>
 							</li>
 
 
-							{% if is_granted('ROLE_ADMIN') %}
+						{% elseif is_granted('ROLE_ADMIN') %}
 
 
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_category_index') }}">Categories</a>
-								</li>
-
-								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_rendez_vous_index') }}">Rendez-vous<a></li>
-
-									{% endif %}
-
-								{% else %}
-
+							<li class="nav-item">
+								<a class="nav-link active" href="{{ path('app_category_index') }}">Categories</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link active" href="{{ path('app_rendez_vous_index') }}">Rendez-vous<a></li>
 
 									<li class="nav-item">
-										<a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+										<a class="nav-link active" href="{{ path('app_prestation_index') }}">Prestations<a></li>
+
+
+											<li class="nav-item">
+												<a class="nav-link active" href="{{ path('app_tarifs_index') }}">Tarifs<a></li>
+
+													<li class="nav-item">
+														<a class="nav-link active" href="{{ path('app_admin') }}">Profil</a>
+													</li>
+													<li class="nav-item">
+														<a class="nav-link active" href="{{ path('app_logout') }}">Logout</a>
+													</li>
+
+
+												{% else %}
+
+													<li class="nav-item">
+														<a class="nav-link active" href="{{ path('app_login') }}">Connexion</a>
+													</li>
+
+													<li class="nav-item">
+														<a class="nav-link active" href="{{ path('app_register') }}">Inscription</a>
+													</li>
+
+												{% endif %}
+											</li>
+										</ul>
 									</li>
-
-									<li class="nav-item">
-										<a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
-
-									</li>
-
-								{% endif %}
-
-
-							</ul>
-
+								</div>
+							</li>
 						</div>
-
-					</div>
-
-				</nav>
-
+					</nav>
+				</div>
+				<div id="hamburger-sidebar">
+					<div id="hamburger-sidebar-header"></div>
+					<div id="hamburger-sidebar-body"></div>
+				</div>
+				<div id="hamburger-overlay"></div>
 			</div>
-			<div id="hamburger-sidebar">
-				<div id="hamburger-sidebar-header"></div>
-				<div id="hamburger-sidebar-body"></div>
-			</div>
-			<div id="hamburger-overlay"></div>
 		</div>
 	</div>
-</div>

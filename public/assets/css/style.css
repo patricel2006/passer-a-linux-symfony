@@ -237,16 +237,17 @@ div.container>main>div.solution>div.presentation>div#presentationTexte>ul {
     list-style: circle !important;
 }
 
-div.container>main>div.nosTarifs {
+/******************************Prestations************************************/
+
+
+/******************************TARIFS ******************************************/
+
+div.nosTarifs {
     border: 3px solid black;
     border-radius: 10px;
     margin: 40px auto;
 }
 
-div.container>main>div.nosTarifs>h2 {
-    border: 3px solid black;
-    border-radius: 10px;
-}
 
 div.container>main>div.nosTarifs>h2 {
     margin: 0 auto;
@@ -387,10 +388,20 @@ section#page_connexion>h2 {
     margin: 20px;
 }
 
+/*******************************card bootstrap *******************************/
+.carte {
+    margin: 70px;
+}
+
 /******************************FOOTER**************************/
 
-footer {
+.footer {
     border: 3px solid black;
     border-radius: 10px;
-    margin: 20px auto;
+}
+
+/*****************************Border******************************/
+.bordure {
+    border: 3px solid black;
+    border-radius: 10px;
 }

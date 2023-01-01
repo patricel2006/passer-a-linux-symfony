@@ -27,7 +27,7 @@ class RendezVous
     #[ORM\JoinColumn(nullable: false)]
     private ?Prestation $prestation = null;
 
-    #[ORM\OneToOne(inversedBy: 'rendezVous', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'rendezVouses')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
@@ -89,7 +89,7 @@ class RendezVous
         return $this->user;
     }
 
-    public function setUser(User $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 

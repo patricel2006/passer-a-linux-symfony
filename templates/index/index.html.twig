@@ -7,13 +7,13 @@
 	<div class="container">
 		<main>
 
-			<div class="probleme row alert alert-primary text-center" role="alert">
+			<div class="probleme row alert alert-primary text-center bordure" role="alert">
 				<h2>Marre de payer pour faire vos mises à jour windows ?</h2>
 			</div>
-			<div class="solution alert alert-warning text-center" role="alert">
+			<div class="solution alert alert-warning text-center bordure" role="alert">
 				<h2>LA SOLUTION : PASSER À LINUX !</h2>
 			</div>
-			<section class="alert alert-warning">
+			<section class="alert alert-warning bordure">
 				<h3 class="text-center">PRESENTATION :</h3>
 
 
@@ -35,7 +35,7 @@
 
 			{# ------------------------------------------------------------------------------------ #}
 
-			<section class="alert alert-warning">
+			<section class="alert alert-warning bordure">
 				<h3 class="text-center">PRESTATIONS :</h3>
 
 				<br>
@@ -47,7 +47,7 @@
 					class="row">
 					{# navbar #}
 					{% for category in categories %}
-						<a href="{{ path('app_prestation_index', { 'id' : category.id }) }}" class="btn btn-primary col-md-3 mx-auto ">{{ category.name }}</a>
+						<p class="btn-primary col-md-3 mx-auto ">{{ category.name }}</p>
 
 					{% endfor %}
 				</div>
@@ -55,7 +55,7 @@
 				<section class="d-flex">
 
 					{% for prestation in prestations %}
-						<div class="card m-5" style="width: 18rem;">
+						<div class="card carte" style="width: 18rem;">
 							<img class="card-img-top" src="{{ asset('photos/' ~ prestation.image) }}" alt="Card image cap">
 
 							<div class="card-body">
@@ -63,7 +63,7 @@
 
 								<p class="card-text">{{ prestation.description }}</p>
 
-								<a href="{{ path('user_prestation_show' , { 'id' : prestation.id }) }}" class="btn btn-primary">Lire la suite</a>
+								<a href="{{ path('app_prestation_show' , { 'id' : prestation.id }) }}" class="btn btn-primary">Lire la suite</a>
 
 							</div>
 						</div>
@@ -81,16 +81,17 @@
 
 				<section class="d-flex">
 
-					{% for prestation in prestations %}
+					{% for tarif in tarifs %}
 						<div class="card m-5" style="width: 18rem;">
-							<img class="card-img-top" src="{{ asset('photos/' ~ prestation.image) }}" alt="Card image cap">
+							<img class="card-img-top" src="{{ asset('photos/' ~ tarif.prestation.image) }}" alt="Card image cap">
 
 							<div class="card-body">
-								<h5 class="card-title">{{ prestation.name }}</h5>
+								<h5 class="card-title">{{ tarif.name }}</h5>
 
-								<p class="card-text">{{ prestation.description }}</p>
+								<p class="card-text">{{ tarif.tarif }}
+									Euros</p>
 
-								<a href="{{ path('user_prestation_show' , { 'id' : prestation.id }) }}" class="btn btn-primary">Lire la suite</a>
+								<a href="{{ path('app_prestation_show' , { 'id' : tarif.prestation.id }) }}" class="btn btn-primary">Lire la suite</a>
 
 							</div>
 						</div>
@@ -98,13 +99,6 @@
 				</section>
 
 
-				<ol class="p-5 col-12 list-group list-group-numbered">
-					<li class="list-group-item">Forfait Installation...............................................190
-																																																																																																																																																																						                    euros*</li>
-					<li class="list-group-item">Forfait Installation + Prise en main........................250 euros*
-					</li>
-					<p><br>* tarifs adaptables en fonction de vos moyens</p>
-				</ol>
 			</div>
 
 		</main>

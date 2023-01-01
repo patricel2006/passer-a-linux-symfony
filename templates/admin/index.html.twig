@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!
+{% endblock %}
+
+{% block body %}
+	<section class="text-center">
+		<h1>Profil Administrateur</h1>
+
+		<p>Bonjour, voici votre mail administrateur :
+			{{ app.user.email }}</p>
+
+		<h4>Voici vos demandes d'installation :
+		</h4>
+		{% if rdvUsersReserve %}
+			{% for rdvUserReserve in rdvUsersReserve %}
+				<tr>
+					<td colspan="2">{{ rdvUserReserve.id }}</td><br/>
+
+					<td>{{ rdvUserReserve.name }}</td><br/>
+
+
+					<td>{{ rdvUserReserve.status }}</td><br/>
+
+
+					<td>{{ rdvUserReserve.prestation.name }}</td><br/>
+
+				</tr>
+			{% endfor %}
+		{% endif %}
+
+		<h4>Voici vos demandes d'intervention :
+		</h4>
+
+
+		{% if rdvUsersValide %}
+			{% for rdvUserValide in rdvUsersValide %}
+				<tr>
+					<td colspan="2">{{ rdvUserValide.id }}</td><br/>
+
+					<td>{{ rdvUserValide.name }}</td><br/>
+
+
+					<td>{{ rdvUserValide.status }}</td><br/>
+
+
+					<td>{{ rdvUserValide.prestation.name }}</td><br/>
+
+				</tr>
+			{% endfor %}
+		{% endif %}
+
+
+	</section>
+
+
+{% endblock %}

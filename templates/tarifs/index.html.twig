@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tarifs index{% endblock %}
+
+{% block body %}
+    <h1>Tarifs index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Tarif</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tarif in tarifs %}
+            <tr>
+                <td>{{ tarif.id }}</td>
+                <td>{{ tarif.name }}</td>
+                <td>{{ tarif.tarif }}</td>
+                <td>
+                    <a href="{{ path('app_tarifs_show', {'id': tarif.id}) }}">show</a>
+                    <a href="{{ path('app_tarifs_edit', {'id': tarif.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_tarifs_new') }}">Create new</a>
+{% endblock %}

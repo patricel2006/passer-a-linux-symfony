@@ -19,26 +19,30 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for rendez_vou in rendez_vous %}
-				<tr>
-					<td>{{ rendez_vou.id }}</td>
-					<td>{{ rendez_vou.dateRdv ? rendez_vou.dateRdv|date('Y-m-d') : '' }}</td>
-					<td>{{ rendez_vou.name }}</td>
-					<td>{{ rendez_vou.status }}</td>
-					<td>
-						<a href="{{ path('app_show_rendez_vous', {'id': rendez_vou.id}) }}">show</a>
+			{% if rendez_vous %}
+				{% for rendez_vou in rendez_vous %}
+					{% if rendez_vou.status == 'libre' %}
 
-						<a href="{{ path('app_reservation_rendez_vous', {'id': rendez_vou.id}) }}">reservation</a>
+						<tr>
+							<td>{{ rendez_vou.id }}</td>
+							<td>{{ rendez_vou.dateRdv ? rendez_vou.dateRdv|date('Y-m-d') : '' }}</td>
+							<td>{{ rendez_vou.name }}</td>
+							<td>{{ rendez_vou.status }}</td>
+							<td>
+								<a href="{{ path('app_show_rendez_vous', {'id': rendez_vou.id}) }}">show</a>
 
+								<a href="{{ path('app_reservation_rendez_vous', {'id': rendez_vou.id}) }}">reservation</a>
+							</td>
+						</tr>
 
-					</td>
-				</tr>
+					{% endif %}
+				{% endfor %}
+
 			{% else %}
 				<tr>
 					<td colspan="5">no records found</td>
 				</tr>
-			{% endfor %}
+			{% endif %}
 		</tbody>
 	</table>
-
 {% endblock %}

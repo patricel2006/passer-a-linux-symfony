@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -29,9 +31,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
-    private ?RendezVous $rendezVous = null;
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: RendezVous::class)]
+    private Collection $rendezVouses;
 
+    public function __construct()
+    {
+        $this->rendezVouses = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -103,19 +109,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getRendezVous(): ?RendezVous
+    /**
+     * @return Collection<int, RendezVous>
+     */
+    public function getRendezVouses(): Collection
     {
-        return $this->rendezVous;
+        return $this->rendezVouses;
     }
 
-    public function setRendezVous(RendezVous $rendezVous): self
+    public function addRendezVouse(RendezVous $rendezVouse): self
     {
-        // set the owning side of the relation if necessary
-        if ($rendezVous->getUser() !== $this) {
-            $rendezVous->setUser($this);
+        if (!$this->rendezVouses->contains($rendezVouse)) {
+            $this->rendezVouses->add($rendezVouse);
+            $rendezVouse->setUser($this);
         }
 
-        $this->rendezVous = $rendezVous;
+        return $this;
+    }
+
+    public function removeRendezVouse(RendezVous $rendezVouse): self
+    {
+        if ($this->rendezVouses->removeElement($rendezVouse)) {
+            // set the owning side to null (unless already changed)
+            if ($rendezVouse->getUser() === $this) {
+                $rendezVouse->setUser(null);
+            }
+        }
 
         return $this;
     }
