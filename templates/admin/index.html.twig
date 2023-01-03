@@ -22,6 +22,9 @@
 
 					<td>{{ rdvUserReserve.status }}</td><br/>
 
+					<td>{{ rdvUserReserve.date | date('d/m/Y') }}</td><br/>
+
+
 
 					<td>{{ rdvUserReserve.prestation.name }}</td><br/>
 
@@ -42,6 +45,10 @@
 
 
 					<td>{{ rdvUserValide.status }}</td><br/>
+
+					<td>{{ rdvUserValide.DateRdv | date('d/m/Y') }}</td><br/>
+
+
 
 
 					<td>{{ rdvUserValide.prestation.name }}</td><br/>
