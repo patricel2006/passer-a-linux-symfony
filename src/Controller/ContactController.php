@@ -26,7 +26,7 @@ class ContactController extends AbstractController
         $data_contact = $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // do anything else you need here, like send an email
+            // envoyer un email de confirmation : 
 
             $email = (new TemplatedEmail())
                 ->from($data_contact->get('email')->getData())
@@ -44,7 +44,9 @@ class ContactController extends AbstractController
                 $entityManagerInterface->persist($contact);
                 $entityManagerInterface->flush();
                 $this->addFlash('success', "Votre message a bien été envoyé");
-            } catch (TransportExceptionInterface $e) {
+            } 
+            
+            catch (TransportExceptionInterface $e) {
                 $this->addFlash('error', "Erreur lors de l'envoi du message");
             }
             return $this->redirectToRoute('app_index');
