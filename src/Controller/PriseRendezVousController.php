@@ -33,8 +33,8 @@ class PriseRendezVousController extends AbstractController
             throw $this->createNotFoundException("ce rendez-vous n'existe pas.");
         }
         $rendezVous->setUser($this->getUser()); // lier un user à ce rendez-vous
-        $rendezVous->setStatus("réservé");
-        $rendezVousRepository->save($rendezVous, true);
+        $rendezVous->setStatus("réservé"); // modifier le status du rendez-vous
+        $rendezVousRepository->save($rendezVous, true); // modifier le status du rendez-vous en bdd
 
         $this->addFlash('success', "Le rendez-vous " . $rendezVous->getName() . " a été réservé.");
 

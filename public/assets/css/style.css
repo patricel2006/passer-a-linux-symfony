@@ -122,7 +122,11 @@ button {
 @media screen and (max-width:992px) {
     header {
         background: red;
+            }
+    #titreSite {
+        font-size: 50px !important;
     }
+    
 
     #hamburger-content {
         display: none;
@@ -144,6 +148,14 @@ button {
 
     #logo {
         z-index: 0;
+    }
+}
+
+/**************************************écran inférieur à 576px ****************/
+@media screen and (max-width:576px) {
+    #titreSite {
+        font-size: 30px !important;
+        left: 200px !important;
     }
 }
 

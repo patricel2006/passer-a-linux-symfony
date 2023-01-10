@@ -10,12 +10,26 @@ $(document).ready(function () {
 
 
     function deplacementTitre() {
-        $('#titreSite').animate({
-            left: '300px'
-        },
-            1500, function () {
-                $(this).css('color', 'orange')
-            });
+        $(window).resize(function () {
+
+            if ($(window).innerWidth() < 576) {
+                $('#titreSite').animate({
+                    left: '100px'
+                },
+                    1500, function () {
+                        $(this).css('color', 'black')
+                    });
+            }
+
+            else {
+                $('#titreSite').animate({
+                    left: '300px'
+                },
+                    1500, function () {
+                        $(this).css('color', 'black')
+                    });
+            }
+        });
     }
 
     setInterval(deplacementTitre, 1500);
