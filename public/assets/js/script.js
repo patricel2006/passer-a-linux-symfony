@@ -10,30 +10,31 @@ $(document).ready(function () {
 
 
     function deplacementTitre() {
-        $(window).resize(function () {
 
-            if ($(window).innerWidth() < 576) {
+            if ($(window).innerWidth() > 576) {
                 $('#titreSite').animate({
-                    left: '100px'
+                    left: '300px',
+                    color: 'red'
                 },
                     1500, function () {
-                        $(this).css('color', 'black')
-                    });
-            }
+                        $(this).css('color', 'orange');
+                });
+              }
 
             else {
                 $('#titreSite').animate({
-                    left: '300px'
+                    left: '100px',
+                    color: 'red'
                 },
                     1500, function () {
-                        $(this).css('color', 'black')
+                        $(this).css('color', 'red');
                     });
             }
-        });
     }
 
     setInterval(deplacementTitre, 1500);
     deplacementTitre();
+
 
     function deplacementLogo() {
         $('#logo')
