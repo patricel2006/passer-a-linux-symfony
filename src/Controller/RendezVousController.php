@@ -29,9 +29,10 @@ class RendezVousController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $rendezVous->setUser($this->getUser()); // lier le rdv à un user
+            $rendezVous->setUser($this->getUser());// lier le rdv à un user
+            if ($rendezVous->getUser() == $this->getUser()) {
             $rendezVousRepository->save($rendezVous, true);
-
+            }
             return $this->redirectToRoute('app_rendez_vous_index', [], Response::HTTP_SEE_OTHER);
         }
 
