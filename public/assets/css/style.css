@@ -1,5 +1,6 @@
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: #eee;
 }
 
 /***************************HEADER****************************************/
@@ -34,6 +35,8 @@ nav {
     vertical-align: bottom;
     padding-bottom: 10px;
     height: 25vh;
+    border: 3px solid black;
+    border-radius: 10px;
 }
 
 li {

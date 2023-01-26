@@ -10,10 +10,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/rendez-vous')]
+#[Route('/admin')]
 class RendezVousController extends AbstractController
 {
-    #[Route('/', name: 'app_rendez_vous_index', methods: ['GET'])]
+    #[Route('/rendez-vous', name: 'app_rendez_vous_index', methods: ['GET'])]
     public function index(RendezVousRepository $rendezVousRepository): Response
     {
         return $this->render('rendez_vous/index.html.twig', [
@@ -21,7 +21,7 @@ class RendezVousController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_rendez_vous_new', methods: ['GET', 'POST'])]
+    #[Route('/rendez-vous/new', name: 'app_rendez_vous_new', methods: ['GET', 'POST'])]
     public function new(Request $request, RendezVousRepository $rendezVousRepository): Response
     {
         $rendezVous = new RendezVous();
@@ -42,7 +42,7 @@ class RendezVousController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_rendez_vous_show', methods: ['GET'])]
+    #[Route('/rendez-vous/{id}', name: 'app_rendez_vous_show', methods: ['GET'])]
     public function show(RendezVous $rendezVou): Response
     {
         return $this->render('rendez_vous/show.html.twig', [
@@ -50,7 +50,7 @@ class RendezVousController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_rendez_vous_edit', methods: ['GET', 'POST'])]
+    #[Route('/rendez-vous/{id}/edit', name: 'app_rendez_vous_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, RendezVous $rendezVou, RendezVousRepository $rendezVousRepository): Response
     {
         $form = $this->createForm(RendezVousType::class, $rendezVou);
@@ -68,7 +68,7 @@ class RendezVousController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_rendez_vous_delete', methods: ['POST'])]
+    #[Route('/rendez-vous/{id}', name: 'app_rendez_vous_delete', methods: ['POST'])]
     public function delete(Request $request, RendezVous $rendezVou, RendezVousRepository $rendezVousRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $rendezVou->getId(), $request->request->get('_token'))) {
@@ -78,7 +78,7 @@ class RendezVousController extends AbstractController
         return $this->redirectToRoute('app_rendez_vous_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    #[Route('/prise/validation/{id}', name: 'app_validation_rendez_vous', methods: 'GET')]
+    #[Route('/rendez-vous/prise/validation/{id}', name: 'app_validation_rendez_vous', methods: 'GET')]
     public function validation(RendezVous $rendezVous, RendezVousRepository $rendezVousRepository): Response
     {
         if (!$rendezVous) {

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prestation index
+{% endblock %}
+
+{% block body %}
+	<h1>Prestation index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Image</th>
+				<th>Duration</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for prestation in prestations %}
+				<tr>
+					<td>{{ prestation.id }}</td>
+					<td>{{ prestation.name }}</td>
+					<td>{{ prestation.description }}</td>
+					<td><img src="{{ asset('photos/' ~ prestation.image )}}" style="width: 100px" "height: 100px" alt=""></td>
+
+					<td>{{ prestation.duration }}</td>
+					<td>
+						<a href="{{ path('app_reserver_show_prestation', {'id': prestation.id}) }}">show</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">Pas d'enregistrement trouvé.</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}
+

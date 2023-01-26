@@ -7,7 +7,7 @@ use App\Repository\RendezVousRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+#[Route('/user')]
 class PriseRendezVousController extends AbstractController
 {
     #[Route('/prise/rendez-vous', name: 'app_prise_rendez_vous')]

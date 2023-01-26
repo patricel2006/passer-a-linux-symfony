@@ -14,10 +14,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/prestation')]
+#[Route('/admin')]
 class PrestationController extends AbstractController
 {
-    #[Route('/', name: 'app_prestation_index', methods: ['GET'])]
+    #[Route('/prestation', name: 'app_prestation_index', methods: ['GET'])]
     public function index(PrestationRepository $prestationRepository): Response
     {
         return $this->render('prestation/index.html.twig', [
@@ -25,7 +25,7 @@ class PrestationController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_prestation_new', methods: ['GET', 'POST'])]
+    #[Route('/prestation/new', name: 'app_prestation_new', methods: ['GET', 'POST'])]
     public function new(CategoryRepository $categoryRepository, ImageManager $imageManager, Request $request, PrestationRepository $prestationRepository): Response
     {
         $prestation = new Prestation();
@@ -46,7 +46,7 @@ class PrestationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_prestation_show', methods: ['GET'])]
+    #[Route('/prestation/{id}', name: 'app_prestation_show', methods: ['GET'])]
     public function show(Prestation $prestation): Response
     {
         return $this->render('prestation/show.html.twig', [
@@ -54,7 +54,7 @@ class PrestationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_prestation_edit', methods: ['GET', 'POST'])]
+    #[Route('/prestation/{id}/edit', name: 'app_prestation_edit', methods: ['GET', 'POST'])]
     public function edit(ImageManager $imageManager, Request $request, Prestation $prestation, PrestationRepository $prestationRepository): Response
     {
         $old_name_icon = $prestation->getImage();
@@ -76,7 +76,7 @@ class PrestationController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_prestation_delete', methods: ['POST'])]
+    #[Route('/prestation/{id}', name: 'app_prestation_delete', methods: ['POST'])]
     public function delete(Request $request, Prestation $prestation, PrestationRepository $prestationRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $prestation->getId(), $request->request->get('_token'))) {

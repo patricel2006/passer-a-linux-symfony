@@ -16,29 +16,29 @@
 <div id="hamburger">
 	<div id="hamburger-content">
 		<div class="container-fluid">
-			<nav class="navbar navbar-expand-xl navbar-dark bg-info">
+			<nav class="navbar navbar-expand-xl navbar-dark bg-info border border-dark">
 
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<ul class="navbar-nav mb-2 mb-lg-0 justify-content-around w-100">
 
-						<li class="nav-item">
+						<li class="nav-item ms-4">
 							<a class="nav-link active" aria-current="page" href="{{ path('app_index') }}">Accueil</a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item ms-4">
 							<a class="nav-link active" aria-current="page" href="{{ path('app_contact') }}">Contact</a>
 						</li>
 
 						{% if is_granted('ROLE_USER') and is_granted('ROLE_ADMIN') == false %}
-							<li class="nav-item">
+							<li class="nav-item ms-4">
 								<a class="nav-link active" href="{{ path('app_prise_rendez_vous') }}">Prendre rendez-vous</a>
 							</li>
 
-							<li class="nav-item">
+							<li class="nav-item ms-4">
 								<a class="nav-link active" href="{{ path('app_logout') }}">Logout</a>
 							</li>
 
-							<li class="nav-item">
+							<li class="nav-item ms-4">
 								<a class="nav-link active" href="{{ path('app_user') }}">Profil</a>
 							</li>
 
@@ -46,34 +46,40 @@
 						{% elseif is_granted('ROLE_ADMIN') %}
 
 
-							<li class="nav-item">
+							<li class="nav-item ms-4">
 								<a class="nav-link active" href="{{ path('app_category_index') }}">Categories</a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item ms-4">
 								<a class="nav-link active" href="{{ path('app_rendez_vous_index') }}">Rendez-vous<a></li>
 
-									<li class="nav-item">
-										<a class="nav-link active" href="{{ path('app_prestation_index') }}">Prestations<a></li>
+							<li class="nav-item ms-4">
+								<a class="nav-link active" href="{{ path('app_prestation_index') }}">Prestations<a></li>
 
 
-											<li class="nav-item">
-												<a class="nav-link active" href="{{ path('app_tarifs_index') }}">Tarifs<a></li>
+							<li class="nav-item ms-4">
+							<a class="nav-link active" href="{{ path('app_tarifs_index') }}">Tarifs<a></li>
 
-													<li class="nav-item">
-														<a class="nav-link active" href="{{ path('app_admin') }}">Profil</a>
-													</li>
-													<li class="nav-item">
-														<a class="nav-link active" href="{{ path('app_logout') }}">Logout</a>
-													</li>
+							<li class="nav-item ms-4">
+							<a class="nav-link active" href="{{ path('app_admin') }}">Profil</a>
+							</li>
+
+							<li class="nav-item ms-4">
+							<a class="nav-link active" href="{{ path('app_logout') }}">Logout</a>
+							</li>
+
+							<li class="nav-item ms-4">
+							<a class="nav-link active" href="{{ path('app_admin_user_index') }}">Membres</a></li>
+
+
 
 
 												{% else %}
 
-													<li class="nav-item">
+													<li class="nav-item ms-4">
 														<a class="nav-link active" href="{{ path('app_login') }}">Connexion</a>
 													</li>
 
-													<li class="nav-item">
+													<li class="nav-item ms-4">
 														<a class="nav-link active" href="{{ path('app_register') }}">Inscription</a>
 													</li>
 

@@ -6,10 +6,10 @@ use App\Repository\RendezVousRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+#[Route('/admin')]
 class AdminController extends AbstractController
 {
-    #[Route('/admin', name: 'app_admin')]
+    #[Route('/', name: 'app_admin')]
     public function index(RendezVousRepository $rendezVousRepository): Response
     {
         $rdvUsersReserve = $rendezVousRepository->findBy(['status' => 'réservé']);
